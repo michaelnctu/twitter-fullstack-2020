@@ -17,6 +17,7 @@ const tweetController = {
           ...t.dataValues, 
           description: t.dataValues.description.substring(0,50), 
           isLiked: t.LikedUsers.map(d => d.id).includes(t.id)
+
         }))
         return res.render('tweets', {tweets: data})
       })
@@ -78,6 +79,7 @@ const tweetController = {
       })
     })
     .catch(error => console.log(error))
+
   },
 
   getReply: (req, res) => {
@@ -122,10 +124,6 @@ const tweetController = {
   },
 
 
-
-
-  
-  
 }
 
 module.exports = tweetController
