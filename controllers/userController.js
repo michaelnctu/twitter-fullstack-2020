@@ -10,7 +10,7 @@ const Like = db.Like
 const helpers = require('../_helpers')
 
 const imgur = require('imgur-node-api')
-const IMGUR_CLIENT_ID = '6ff52e969355450'
+const IMGUR_CLIENT_ID = process.env.IMGUR_CLIENT_ID
 const fs = require('fs')
 
 const Op = Sequelize.Op
