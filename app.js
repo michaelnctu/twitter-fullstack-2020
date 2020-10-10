@@ -90,15 +90,10 @@ io.on('connection', socket => {
   user.current = true;
 
   //Welcome current user
-  socket.emit('message', formatMessage(user.name, 'You join the chatroom'))
+  socket.emit('message', formatMessage(user.name, '上線'))
 
   //broadcast when a user connects
   socket.broadcast.emit('message', formatMessage(user.name, ' has joined the chat'))
-
-  //Runs when client disconnects
-  socket.on('disconnect', () => {
-    io.emit('message', formatMessage(user.name, ' has left the chat'))
-  });
 
   socket.on('chat-message', data => {
     io.sockets.emit('chat-message', data)
@@ -114,6 +109,8 @@ io.on('connection', socket => {
   socket.on('typing', data => {
     socket.broadcast.emit('typing', data)
   })
+
+  //Runs when client disconnects
   socket.on('disconnect', () => {
     // 有人離線, 扣人數
     onlineCount = (onlineCount < 0) ? 0 : onlineCount -= 1
