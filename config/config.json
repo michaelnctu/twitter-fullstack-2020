@@ -22,6 +22,6 @@
     "logging": false
   },
   "production": {
-    "use_env_variable": "CLEARDB_TEAL_URL"
+    "use_env_variable": "CLEARDB_DATABASE_URL"
   }
 }
