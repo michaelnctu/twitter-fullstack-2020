@@ -101,7 +101,7 @@ io.on('connection', socket => {
   io.emit('onlinePPL', onlineUsers)
 
   //Welcome current user
-  socket.emit('message', formatMessage(user.name, 'You join the chatroom'))
+  socket.emit('message', formatMessage(' ', 'You join the chatroom'))
 
   //broadcast when a user connects
   socket.broadcast.emit('message', formatMessage(user.name, ' has joined the chat'))
@@ -118,7 +118,7 @@ io.on('connection', socket => {
 
   socket.on('chat-message', data => {
     io.sockets.emit('chat-message', data)
-    console.log("chatroom client 傳來的資訊 ", data)
+    console.log("chatroom client 傳來的資訊 ", data)  //{message: , avatar, name}
   })
 
   //handle chat event
